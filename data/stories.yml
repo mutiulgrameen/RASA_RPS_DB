@@ -1,0 +1,70 @@
+version: "3.0"
+
+stories:
+
+- story: play rock paper scissors
+  steps:
+  - intent: greet
+  - action: utter_play
+  - intent: inform
+  - action: action_play_rps
+  - action: utter_play_again
+
+- story: play again
+  steps:
+  - action: utter_play_again
+  - intent: affirm
+  - action: utter_play
+
+- story: don't play again
+  steps:
+  - action: utter_play_again
+  - intent: deny
+  - action: utter_goodbye
+
+- story: interactive_story_1
+  steps:
+  - intent: inform
+    entities:
+    - choice: rock
+  - slot_was_set:
+    - choice: rock
+  - action: action_play_rps
+  - action: utter_play_again
+  - intent: inform
+    entities:
+    - choice: paper
+  - slot_was_set:
+    - choice: paper
+  - action: action_play_rps
+  - action: utter_play_again
+  - intent: inform
+    entities:
+    - choice: scissors
+  - slot_was_set:
+    - choice: scissors
+  - action: action_play_rps
+
+- story: interactive_story_1
+  steps:
+  - intent: inform
+    entities:
+    - choice: rock
+  - slot_was_set:
+    - choice: rock
+  - action: action_play_rps
+
+- story: interactive_story_1
+  steps:
+  - intent: inform
+    entities:
+    - choice: rock
+  - slot_was_set:
+    - choice: rock
+  - action: action_play_rps
+  - intent: inform
+    entities:
+    - choice: rock
+  - slot_was_set:
+    - choice: rock
+  - action: action_play_rps

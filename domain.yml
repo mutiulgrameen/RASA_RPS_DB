@@ -1,0 +1,42 @@
+version: '3.0'
+intents:
+- affirm
+- bot_challenge
+- deny
+- goodbye
+- greet
+- inform
+entities:
+- choice
+- win
+slots:
+  choice:
+    type: categorical
+    values:
+    - rock
+    - paper
+    - scissors
+    mappings:
+    - type: from_entity
+      entity: choice
+  win:
+    type: bool
+    mappings:
+    - type: from_entity
+      entity: win
+    influence_conversation: false
+responses:
+  utter_play:
+  - text: Type 'rock', 'paper' or 'scissors' to play.
+  utter_play_again:
+  - text: Do you want play again?
+  utter_goodbye:
+  - text: Bye
+  utter_iamabot:
+  - text: I am a bot, powered by Rasa.
+actions:
+- action_play_rps
+- utter_play_again
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
